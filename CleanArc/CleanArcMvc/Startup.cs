@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CleanArc.Infra.Data.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
@@ -36,9 +37,14 @@ namespace CleanArcMvc
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("UniversityDbConnection")));
+                    Configuration.GetConnectionString("IdentityUniversityDbConnection")));
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddDbContext<UniversityAppDBContext>(options =>
+                {
+                    options.UseSqlServer(Configuration.GetConnectionString("UniversityDbConnectionString"));
+                });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
