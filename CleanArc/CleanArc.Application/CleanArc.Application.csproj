@@ -9,4 +9,8 @@
     <Folder Include="Services\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CleanArc\CleanArc.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
