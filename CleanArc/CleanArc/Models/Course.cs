@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CleanArc.Models
+namespace CleanArc.Domain.Models
 {
    public class Course
     {
