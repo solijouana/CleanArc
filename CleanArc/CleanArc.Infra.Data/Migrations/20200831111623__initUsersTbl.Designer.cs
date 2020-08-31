@@ -3,14 +3,16 @@ using CleanArc.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CleanArc.Infra.Data.Migrations
 {
     [DbContext(typeof(UniversityAppDBContext))]
-    partial class UniversityAppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20200831111623__initUsersTbl")]
+    partial class _initUsersTbl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
