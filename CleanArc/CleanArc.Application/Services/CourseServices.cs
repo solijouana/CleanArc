@@ -4,6 +4,7 @@ using System.Text;
 using CleanArc.Application.Interfaces;
 using CleanArc.Application.ViewModels;
 using CleanArc.Domain.Interfaces;
+using CleanArc.Domain.Models;
 
 namespace CleanArc.Application.Services
 {
@@ -21,6 +22,11 @@ namespace CleanArc.Application.Services
             {
                 Courses = _repository.GetAllCourses()
             };
+        }
+
+        public Course GetCourseById(int courseId)
+        {
+            return _repository.GetCourseById(courseId);
         }
     }
 }
