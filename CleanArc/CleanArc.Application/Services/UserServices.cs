@@ -50,5 +50,10 @@ namespace CleanArc.Application.Services
 
             return CheckUser.Ok;
         }
+
+        public bool IsExistUser(string email, string password)
+        {
+            return _userRepository.IsExistUser(email.Trim().ToLower(), PasswordHelper.EncodePasswordMd5(password));
+        }
     }
 }

@@ -31,6 +31,11 @@ namespace CleanArc.Infra.Data.Repository
             return _context.Users.Any(u => u.Email == email);
         }
 
+        public bool IsExistUser(string email, string password)
+        {
+            return _context.Users.Any(u => u.Email == email && u.Password == password);
+        }
+
         public void Save()
         {
             _context.SaveChanges();

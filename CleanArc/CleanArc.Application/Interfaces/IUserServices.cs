@@ -11,5 +11,7 @@ namespace CleanArc.Application.Interfaces
         int AddUser(RegisterViewModel register);
         CheckUser CheckUserName(string userName);
         CheckUser CheckEmail(string email);
+        bool IsExistUser(string email, string password);
     }
 }
+    
