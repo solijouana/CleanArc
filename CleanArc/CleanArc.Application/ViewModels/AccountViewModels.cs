@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CleanArc.Application.ViewModels
 {
-    public class Register   
+    public class RegisterViewModel   
     {
         [Required]
         [MaxLength(150)]
@@ -26,5 +26,17 @@ namespace CleanArc.Application.ViewModels
         [DataType(DataType.Password)]
         [Compare("Password")]
         public string ConfirmPassword { get; set; } 
+    }
+
+    public class LoginViewModel
+    {
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+        public bool RememberMe { get; set; }
     }
 }

@@ -8,8 +8,8 @@ namespace CleanArc.Application.Interfaces
 {
     public interface IUserServices
     {
-        int AddUser(User user);
-        CheckUser IsexistUserName(string userName);
-        CheckUser IsExistEmail(string email);
+        int AddUser(RegisterViewModel register);
+        CheckUser CheckUserName(string userName);
+        CheckUser CheckEmail(string email);
     }
 }

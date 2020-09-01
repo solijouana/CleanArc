@@ -1,4 +1,5 @@
-﻿@model CleanArc.Domain.Models.User
+﻿@using CleanArc.Application.ViewModels
+@model CleanArc.Application.ViewModels.RegisterViewModel
 
 @{
     ViewData["Title"] = "Register";
@@ -6,10 +7,18 @@
 
 <h2>Register</h2>
 
-<h4>User</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    @{
+        CheckUser check = (CheckUser)ViewBag.UserCheck;
+        if (check != CheckUser.Ok)
+        {
+            <div class="alert alert-danger">
+                @check.ToString()
+            </div>
+        }
+    }
+    <div class="col-md-12">
         <form asp-action="Register">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -28,7 +37,12 @@
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Register" class="btn btn-default" />
+                <label asp-for="ConfirmPassword" class="control-label"></label>
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-primary" />
             </div>
         </form>
     </div>

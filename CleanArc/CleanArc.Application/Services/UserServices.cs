@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using CleanArc.Application.Interfaces;
+using CleanArc.Application.Security;
 using CleanArc.Application.ViewModels;
 using CleanArc.Domain.Interfaces;
 using CleanArc.Domain.Models;
@@ -16,16 +17,21 @@ namespace CleanArc.Application.Services
         {
             _userRepository = userRepository;
         }
-        public int AddUser(User user)
-        {
-            User newUser = user;
+        public int AddUser(RegisterViewModel register)
+        { 
+            User newUser =new User()
+            {
+                Email = register.Email.Trim().ToLower(),
+                UserName = register.UserName.Trim().ToLower(),
+                Password = PasswordHelper.EncodePasswordMd5(register.Password)
+            };
             _userRepository.AddUser(newUser);
             _userRepository.Save();
 
             return newUser.UserId;
         }
 
-        public CheckUser IsexistUserName(string userName)
+        public CheckUser CheckUserName(string userName)
         {
             if (_userRepository.IsExistUserName(userName))
             {
@@ -35,7 +41,7 @@ namespace CleanArc.Application.Services
             return CheckUser.Ok;
         }
 
-        public CheckUser IsExistEmail(string email)
+        public CheckUser CheckEmail(string email)   
         {
             if (_userRepository.IsExistEmail(email))
             {
